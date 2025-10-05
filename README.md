@@ -6,7 +6,7 @@
 
 It combines **AWS’s serverless infrastructure** with **agentic orchestration**, **explainable reasoning**, and **enterprise-grade security** — creating a platform that’s powerful, scalable, and cost-efficient
 
-Alex automatically researches financial markets (uses [Polygon](polygon.io) APIs), enriches knowledge through embeddings, and produces rich, interactive financial analyses for end users.
+Alex automatically researches financial markets (uses [Polygon](https://polygon.io/) APIs), enriches knowledge through embeddings, and produces rich, interactive financial analyses for end users.
 
 ---
 
@@ -15,9 +15,9 @@ Alex automatically researches financial markets (uses [Polygon](polygon.io) APIs
 | Guide | Description |
 |-------|-------------|
 | [Agentic System Architecture](./docs/agentic_architecture.md) | Infrastructure, orchestration, and scalability overview |
-| [Developer setup](./docs/dev_setup.md) | Screenshots and user instructions |
+| [Developer setup](./docs/dev_setup.md) | Instructions for developer setup |
 | [UI & Usage Guide](./docs/ui_guide.md) | Screenshots and user instructions |
-| [AWS Infra](./docs/architecture.md) | Core system prompt for Alex |
+| [AWS Infra](./docs/architecture.md) | AWS Infrastructure used for deplyment|
 
 ---
 
