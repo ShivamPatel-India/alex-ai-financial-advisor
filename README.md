@@ -31,7 +31,7 @@ Alex automatically researches financial markets (uses [Polygon](https://polygon.
 ---
 
 ## 🧠 Architecture Snapshot
-![Architecture](./screenshots/architecture-diagram.png)
+![Architecture](./screenshots/AWS%20Infra.png)
 
 ---
 
