@@ -1,13 +1,14 @@
 # 🧠 Alex – The AI Financial Advisor  
 
+**Alex** is an **AI-powered financial advisor** that delivers personalized portfolio analysis, market insights, and retirement planning through a collaborative team of specialized AI agents. Alex automatically researches financial markets, enriches knowledge through embeddings, and produces rich and comprehensive financial analysis for end users' portfolios according to their settings which can include parameters such as total years until retirement, annual income after retirement and many more.
+
 🌐 [Live link](https://d2zvcu31a3zafz.cloudfront.net/)
+
 ☕ Heads-up: the live demo sometimes takes a budget-induced coffee break (AWS caps). If it’s snoozing, run it locally—see [dev_setup.md](./docs/dev_setup.md).
 
-**Alex** is an **AI-powered financial advisor** that delivers personalized portfolio analysis, market insights, and retirement planning through a collaborative team of specialized AI agents.
 
 It combines **AWS’s serverless infrastructure** with **agentic orchestration**, **explainable reasoning**, and **enterprise-grade security, monitoring, and observability** — creating a platform that’s powerful, scalable, and cost-efficient
 
-Alex automatically researches financial markets, enriches knowledge through embeddings, and produces rich and comprehensive financial analysis for end users' portfolios according to their settings which can include parameters such as total years until retirement, annual income after retirement and many more.
 
 ---
 
