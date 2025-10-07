@@ -1,12 +1,13 @@
-# AWS Infrastructure
+# Alex AWS Infrastructure Overview
+The Alex platform uses a modern serverless architecture on AWS, combining AI services with cost-effective infrastructure:
 
 ![Homepage](../screenshots/AWS%20Infra.png)
 
-# Alex Architecture Overview (S3 Vectors Version)
+---
 
-## System Architecture
+## System Architecture of Researcher Agent
 
-The Alex platform uses a modern serverless architecture on AWS, combining AI services with cost-effective infrastructure:
+As shown in the image above, there are mainly 6 Agents. Planner, Tagger, Reporter, Charter and Retirement analyser are deployed using AWS Lambda. On the other hand, Researcher agent which runs every two hours is deployed using AWS AppRunner and the detailed diagram of which is shown below:
 
 ```mermaid
 graph TB
@@ -58,7 +59,7 @@ graph TB
 
 ## Component Details
 
-### 1. **S3 Vectors** (NEW! - 90% Cost Reduction)
+### 1. **S3 Vectors** (90% Cost Reduction)
 - **Purpose**: Native vector storage in S3
 - **Features**: 
   - Sub-second similarity search
@@ -109,28 +110,6 @@ graph TB
 - **Purpose**: Research generation and analysis
 - **Features**: 128K context window, cross-region access
 
-## Data Flow
-
-1. **Manual Research Flow**:
-   ```
-   User → App Runner → Bedrock (generate) → API Gateway → Lambda → S3 Vectors
-   ```
-
-2. **Automated Research Flow**:
-   ```
-   EventBridge (every 2hrs) → Lambda Scheduler → App Runner → Bedrock → API Gateway → Lambda → S3 Vectors
-   ```
-
-3. **Direct Ingest Flow**:
-   ```
-   User → API Gateway → Lambda → SageMaker (embed) → S3 Vectors
-   ```
-
-4. **Search Flow** (future):
-   ```
-   User → API Gateway → Lambda → S3 Vectors (similarity search)
-   ```
-
 ## Security Features
 
 - **API Gateway**: API key authentication
@@ -138,28 +117,6 @@ graph TB
 - **S3 Vectors**: Always private (no public access)
 - **App Runner**: HTTPS by default
 - **Secrets**: Environment variables for API keys
-
-## Deployment Architecture
-
-```mermaid
-graph LR
-    Dev[fa:fa-laptop Developer]
-    GH[fa:fa-code-branch GitHub Repo]
-    TF[fa:fa-cog Terraform]
-    AWS[fa:fa-cloud AWS]
-    
-    Dev -->|Push| GH
-    Dev -->|Run| TF
-    TF -->|Deploy| AWS
-    
-    subgraph AWS Infrastructure
-        S3[S3 State]
-        Resources[All Resources]
-    end
-    
-    TF -.->|State| S3
-    TF -->|Create| Resources
-```
 
 ## Technology Stack
 
@@ -179,10 +136,39 @@ graph LR
 4. **Performance**: Sub-second queries
 5. **Integration**: Native AWS service
 
-## Future Enhancements
+---
 
-- Frontend application (Next.js)
-- User authentication
-- Advanced search features
-- Real-time updates
-- Analytics dashboard
+## Frontend & API
+
+This section describes the deployment of frontend part - a modern React application with real-time agent visualization, portfolio management, and comprehensive financial analysis displays.
+
+### SaaS frontend with:
+- **Authentication**: Clerk-based sign-in/sign-up with automatic user creation
+- **Portfolio Management**: Add accounts, track positions, edit holdings
+- **AI Analysis**: Trigger and monitor multi-agent analysis with real-time progress
+- **Interactive Reports**: Markdown reports, dynamic charts, retirement projections
+- **Production Infrastructure**: CloudFront CDN, API Gateway, Lambda backend
+
+Here's the complete architecture:
+
+```mermaid
+graph TB
+    User[User Browser] -->|HTTPS| CF[CloudFront CDN]
+    CF -->|Static Files| S3[S3 Static Site]
+    CF -->|/api/*| APIG[API Gateway]
+
+    User -->|Auth| Clerk[Clerk Auth]
+    APIG -->|JWT| Lambda[API Lambda]
+
+    Lambda -->|Data API| Aurora[(Aurora DB)]
+    Lambda -->|Trigger| SQS[SQS Queue]
+
+    SQS -->|Process| Agents[AI Agents]
+    Agents -->|Results| Aurora
+
+    style CF fill:#FF9900
+    style S3 fill:#569A31
+    style Lambda fill:#FF9900
+    style Clerk fill:#6C5CE7
+```
+---

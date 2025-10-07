@@ -28,13 +28,13 @@ graph TB
     Researcher -->|Store Insights| Vectors
     Researcher -->|Web Research| Browser[Web Browser<br/>MCP Server]
     
-    style Planner fill:#FFD700,stroke:#333,stroke-width:3px
-    style Researcher fill:#87CEEB
+    style Planner fill:#520101,stroke:#333,stroke-width:3px
+    style Researcher fill:#520101
     style Schedule fill:#9333EA
-    style Tagger fill:#98FB98
-    style Reporter fill:#DDA0DD
-    style Charter fill:#F0E68C
-    style Retirement fill:#FFB6C1
+    style Tagger fill:#520101
+    style Reporter fill:#520101
+    style Charter fill:#520101
+    style Retirement fill:#520101
 ```
 
 ## Agent Responsibilities
@@ -59,8 +59,8 @@ graph TB
 ### Researcher (Independent Agent)
 **Role**: Autonomously gather market intelligence and investment insights
 - Runs independently on EventBridge schedule (every 2 hours)
-- Not orchestrated by Financial Planner - operates autonomously
-- Browses financial websites for latest market trends
+- Not orchestrated by Financial Planner Agent - operates autonomously
+- Browses financial websites for latest market trends (uses Playwright web browser and Polygon.io service)
 - Analyzes company news and earnings reports
 - Researches economic indicators and market conditions
 - Generates investment insights and recommendations
@@ -180,12 +180,12 @@ graph LR
 
 | Agent | AI Model | Primary Function | Output Format | Execution Time |
 |-------|----------|------------------|---------------|----------------|
-| Financial Planner | Claude 4 Sonnet | Orchestration & Coordination | Job Status | 2-3 minutes |
-| InstrumentTagger | Claude 4 Sonnet | Asset Classification | Structured JSON | 5-10 seconds |
-| Researcher | Claude 4 Sonnet | Market Intelligence | Markdown Articles | 30-60 seconds |
-| Report Writer | Claude 4 Sonnet | Portfolio Narrative | Markdown Report | 20-30 seconds |
-| Chart Maker | Claude 4 Sonnet | Data Visualization | Recharts JSON | 10-15 seconds |
-| Retirement Specialist | Claude 4 Sonnet | Future Projections | Analysis + Charts | 20-30 seconds |
+| Financial Planner | Claude / Nova | Orchestration & Coordination | Job Status | 2-3 minutes |
+| InstrumentTagger | Claude / Nova | Asset Classification | Structured JSON | 5-10 seconds |
+| Researcher | Claude / Nova | Market Intelligence | Markdown Articles | 30-60 seconds |
+| Report Writer | Claude / Nova | Portfolio Narrative | Markdown Report | 20-30 seconds |
+| Chart Maker | Claude / Nova | Data Visualization | Recharts JSON | 10-15 seconds |
+| Retirement Specialist | Claude / Nova | Future Projections | Analysis + Charts | 20-30 seconds |
 
 ## Knowledge Integration
 
